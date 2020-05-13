@@ -21,9 +21,16 @@ const user =config.get('user')
 const refresh =config.get('refreshToken')
 const client = config.get('clientId')
 const secret = config.get('clientSecret')
+const port=5000 || process.env.PORT
+// app.use(function(req, res, next) {
+//     res.header("Access-Control-Allow-Origin", "https://geizer6991.github.io");
+//     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//     res.header("Access-Control-Allow-Credentials", true);
+//     next();
+// });
 
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "https://geizer6991.github.io");
+    res.header("Access-Control-Allow-Origin", "http://localhost:8848");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Credentials", true);
     next();
@@ -56,7 +63,7 @@ async function start() {
             , useCreateIndex: true
             , autoIndex: false
         });
-        app.listen(5000, console.log(`Server connected to mongoose and start on port`))
+        app.listen(port, console.log(`Server connected to mongoose and start on port`))
     } catch (e) {
         console.log('server error', e.message);
         process.exit(1);
@@ -361,7 +368,6 @@ app.route('/message/setting')
             }).save((err) => {
                 !err ? console.log('dialog Created') : console.log('err01', err);});
 
-
         if(setting.command==='PAR-DEL') {
             for (let i = 0; i < setting.list.length; i++) {
                 Party.deleteOne({_id: setting.list[i]}).then(
@@ -380,3 +386,189 @@ app.route('/message/setting')
                 r[0].save()
             })
     });
+
+
+//=================================================>
+
+    let listAction=[
+      {
+        id:1,priceSumple:100,priceAction:35,currency:'$'
+        ,kind:'Pulover',type:'M',size:['48','46','42','43']
+
+        ,img1:"https://a.lmcdn.ru/product/O/O/OO001EMCRCG7_7203461_1_v1.jpg"
+        ,img2:"https://avatars.mds.yandex.net/get-marketpic/1339465/market_ahA4Am1d-FHhPZ1zAReSOQ/orig"
+        ,img3:"https://image01.bonprix.ru/assets/1400x1960/1535442831/18263376-nEx8tCqM.jpg"
+        ,img4:"https://image01.bonprix.ru/assets/1400x1960/0/18293478-ZK5zIOkY.jpg"
+
+        ,color:'red'
+        ,actionBull:true
+      },{
+        id:2,priceSumple:40,priceAction:30,currency:'$'
+        ,kind:'Pulover',type:'M',size:['48','46','42','43']
+        
+        ,img1:"https://a.lmcdn.ru/product/O/O/OO001EMCRCG7_7203461_1_v1.jpg"
+        ,img2:"https://avatars.mds.yandex.net/get-marketpic/1339465/market_ahA4Am1d-FHhPZ1zAReSOQ/orig"
+        ,img3:"https://image01.bonprix.ru/assets/1400x1960/1535442831/18263376-nEx8tCqM.jpg"
+        ,img4:"https://image01.bonprix.ru/assets/1400x1960/0/18293478-ZK5zIOkY.jpg"
+
+        ,color:'blue'
+        ,actionBull:true
+      },{
+        id:3,priceSumple:40,priceAction:30,currency:'$'
+        ,kind:'Pulover',type:'M',size:['48','46','42','43']
+        
+        ,img1:"https://a.lmcdn.ru/product/O/O/OO001EMCRCG7_7203461_1_v1.jpg"
+        ,img2:"https://avatars.mds.yandex.net/get-marketpic/1339465/market_ahA4Am1d-FHhPZ1zAReSOQ/orig"
+        ,img3:"https://image01.bonprix.ru/assets/1400x1960/1535442831/18263376-nEx8tCqM.jpg"
+        ,img4:"https://image01.bonprix.ru/assets/1400x1960/0/18293478-ZK5zIOkY.jpg"
+
+        ,color:'green'
+        ,actionBull:true
+      },{
+        id:4,priceSumple:40,priceAction:30,currency:'$'
+        ,kind:'Switshot',type:'M',size:['48','46','42','43']
+        
+        ,img1:"https://a.lmcdn.ru/product/O/O/OO001EMCRCG7_7203461_1_v1.jpg"
+        ,img2:"https://avatars.mds.yandex.net/get-marketpic/1339465/market_ahA4Am1d-FHhPZ1zAReSOQ/orig"
+        ,img3:"https://image01.bonprix.ru/assets/1400x1960/1535442831/18263376-nEx8tCqM.jpg"
+        ,img4:"https://image01.bonprix.ru/assets/1400x1960/0/18293478-ZK5zIOkY.jpg"
+
+        ,color:'red'
+        ,actionBull:true
+      },{
+        id:5,priceSumple:40,priceAction:30,currency:'$'
+        ,kind:'Switshot',type:'M',size:['48','46','42','43']
+        
+        ,img1:"https://a.lmcdn.ru/product/O/O/OO001EMCRCG7_7203461_1_v1.jpg"
+        ,img2:"https://avatars.mds.yandex.net/get-marketpic/1339465/market_ahA4Am1d-FHhPZ1zAReSOQ/orig"
+        ,img3:"https://image01.bonprix.ru/assets/1400x1960/1535442831/18263376-nEx8tCqM.jpg"
+        ,img4:"https://image01.bonprix.ru/assets/1400x1960/0/18293478-ZK5zIOkY.jpg"
+
+        ,color:'blue'
+        ,actionBull:true
+      },{
+        id:6,priceSumple:40,priceAction:30,currency:'$'
+        ,kind:'Snickers',type:'M',size:['48','46','42','43']
+        
+        ,img1:"https://a.lmcdn.ru/product/O/O/OO001EMCRCG7_7203461_1_v1.jpg"
+        ,img2:"https://avatars.mds.yandex.net/get-marketpic/1339465/market_ahA4Am1d-FHhPZ1zAReSOQ/orig"
+        ,img3:"https://image01.bonprix.ru/assets/1400x1960/1535442831/18263376-nEx8tCqM.jpg"
+        ,img4:"https://image01.bonprix.ru/assets/1400x1960/0/18293478-ZK5zIOkY.jpg"
+
+        ,color:'green'
+        ,actionBull:true
+      },{
+        id:7,priceSumple:40,priceAction:30,currency:'$'
+        ,kind:'Snickers',type:'M',size:['48','46','42','43']
+        
+        ,img1:"https://a.lmcdn.ru/product/O/O/OO001EMCRCG7_7203461_1_v1.jpg"
+        ,img2:"https://avatars.mds.yandex.net/get-marketpic/1339465/market_ahA4Am1d-FHhPZ1zAReSOQ/orig"
+        ,img3:"https://image01.bonprix.ru/assets/1400x1960/1535442831/18263376-nEx8tCqM.jpg"
+        ,img4:"https://image01.bonprix.ru/assets/1400x1960/0/18293478-ZK5zIOkY.jpg"
+
+        ,color:'red'
+        ,actionBull:true
+      },{
+        id:8,priceSumple:40,priceAction:30,currency:'$'
+        ,kind:'Shoes',type:'M',size:['48','46','42','43']
+       
+        ,img1:"https://a.lmcdn.ru/product/O/O/OO001EMCRCG7_7203461_1_v1.jpg"
+        ,img2:"https://avatars.mds.yandex.net/get-marketpic/1339465/market_ahA4Am1d-FHhPZ1zAReSOQ/orig"
+        ,img3:"https://image01.bonprix.ru/assets/1400x1960/1535442831/18263376-nEx8tCqM.jpg"
+        ,img4:"https://image01.bonprix.ru/assets/1400x1960/0/18293478-ZK5zIOkY.jpg"
+
+        ,color:'blue'
+        ,actionBull:true
+      },{
+        id:9,priceSumple:40,priceAction:30,currency:'$'
+        ,kind:'Shoes',type:'M',size:['48','46','42','43']
+        
+        ,img1:"https://a.lmcdn.ru/product/O/O/OO001EMCRCG7_7203461_1_v1.jpg"
+        ,img2:"https://avatars.mds.yandex.net/get-marketpic/1339465/market_ahA4Am1d-FHhPZ1zAReSOQ/orig"
+        ,img3:"https://image01.bonprix.ru/assets/1400x1960/1535442831/18263376-nEx8tCqM.jpg"
+        ,img4:"https://image01.bonprix.ru/assets/1400x1960/0/18293478-ZK5zIOkY.jpg"
+
+        ,color:'green'
+        ,actionBull:true
+      }
+    ]
+
+     let bisnesCard=[
+      {
+        type:'PREMIUM'
+        ,price:'1000'
+        ,currency:'$'
+        ,imgBig:'https://im0-tub-ru.yandex.net/i?id=cb230404183e1731b9ba9177baab1f41&n=13'
+        ,desc:'Даёт возможность получить скидку, по номиналу карты, от следующей покупки'
+
+     },{
+        type:'STANDART'
+        ,price:'500'
+        ,currency:'$'
+        ,imgBig:'https://im0-tub-ru.yandex.net/i?id=cb230404183e1731b9ba9177baab1f41&n=13'
+        ,desc:'Даёт возможность получить скидку, по номиналу карты, от следующей покупки'
+
+      },{
+        type:'LOW'
+        ,price:'100'
+        ,currency:'$'
+        ,imgBig:'https://im0-tub-ru.yandex.net/i?id=cb230404183e1731b9ba9177baab1f41&n=13'
+        ,desc:'Даёт возможность получить скидку, по номиналу карты, от следующей покупки'
+      }
+    ]
+//=================================================>
+app.route('/sait/action')
+  .post((req,res)=>{
+    let item=req.body.item
+    let items=[]
+    for(let i=0; i<item; i++){
+      items.push(listAction[i])
+    }
+    res.json(items)
+  })
+    
+
+  .get((req,res)=>{
+    res.json(listAction)
+  })
+//=================================================>
+  app.route('/sait/card')
+  .post((req,res)=>{
+    res.json(bisnesCard)
+  })
+
+//=================================================>  
+function ArrayCompa(array1, array2){
+  let r, f=[];
+  r=array1.size.filter(x=>x== array2.size.filter(c=>c===x) )
+  r.length!==0 && f.push(...r)
+
+  if(!array2.strict && array2.size.length === 0){
+    return true
+  }
+
+  if(array2.strict){
+    return array2.size.length === f.length?true:false
+  }else{
+    return f.length!==0?true:false
+  }
+}
+//=================================================>  
+  app.route('/sait/catalog')
+  .post((req,res)=>{
+    let listTags=req.body.list;
+
+    let ArrayItem;
+    let ArrayItems=[];
+
+    ArrayItem=listAction.filter(q=>
+         (q.kind===listTags.kind || listTags.kind==="default" )
+      && (q.color===listTags.color || listTags.color==='default')
+      && q.priceAction>=listTags.priceAction.min
+      && q.priceAction<=listTags.priceAction.max
+      && ArrayCompa(q, listTags))
+
+   // ArrayItem.length!==0 && ArrayItems.push(ArrayItem)
+     res.json(ArrayItem)
+  
+  })
